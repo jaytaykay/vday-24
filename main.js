@@ -21,8 +21,9 @@ renderer.render(scene, camera);
 
 // Torus
 
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const material = new THREE.MeshStandardMaterial({ color: 0xff6347 });
+// const geometry = new THREE.TorusGeometry(10, 2, 20, 100);
+const geometry = new THREE.TorusKnotGeometry(12, 1.5, 40, 100, 4, 11);
+const material = new THREE.MeshNormalMaterial({ color: 0xff6347 });
 const torus = new THREE.Mesh(geometry, material);
 
 scene.add(torus);
@@ -65,7 +66,7 @@ scene.background = spaceTexture;
 
 // Avatar
 
-const jeffTexture = new THREE.TextureLoader().load('jeff.png');
+const jeffTexture = new THREE.TextureLoader().load('Portfolio website_space.png');
 
 const jeff = new THREE.Mesh(new THREE.BoxGeometry(2,2,2), new THREE.MeshBasicMaterial({ map: jeffTexture }));
 
