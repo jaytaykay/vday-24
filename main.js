@@ -67,7 +67,7 @@ scene.background = spaceTexture;
 
 const jeffTexture = new THREE.TextureLoader().load('jeff.png');
 
-const jeff = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: jeffTexture }));
+const jeff = new THREE.Mesh(new THREE.BoxGeometry(2,2,2), new THREE.MeshBasicMaterial({ map: jeffTexture }));
 
 scene.add(jeff);
 
