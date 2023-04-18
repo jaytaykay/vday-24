@@ -129,3 +129,34 @@ function animate() {
 }
 
 animate();
+
+// Button modal 
+const openBtn = document.getElementById('openBtn');
+const closeBtn = document.getElementById('closeBtn');
+const imageModal = document.getElementById('imageModal');
+const modalImage = document.getElementById('modalImage');
+
+// Open the image modal
+openBtn.addEventListener('click', function() {
+  imageModal.style.display = 'flex';
+});
+
+// Close the image modal
+closeBtn.addEventListener('click', function() {
+  imageModal.style.display = 'none';
+});
+
+// Close the image modal when clicking outside of the image
+window.addEventListener('click', function(event) {
+  if (event.target === imageModal) {
+    imageModal.style.display = 'none';
+  }
+});
+
+// open GSFI button
+// Button modal 
+const openGSFI = document.getElementById('openGSFI');
+openGSFI.addEventListener('click', function(){
+  window.open("https://clickbeat.live/");
+
+})
