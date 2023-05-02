@@ -1,0 +1,38 @@
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .col {
+        position: relative; 
+        left: 20px;
+        max-width: 80vw;
+      }
+
+    button {
+      font-size: 14px;
+      padding: 10px 30px;
+    }
+  
+    .row {
+        position: relative;
+        padding: 0 20px;
+    }
+
+    h1,h2,h3,h4,h5 {
+        word-wrap: break-word;
+    }
+    
+    h1 {
+        font-size: 80px;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+    
+    p {
+        font-size: 16px;
+        line-height: 1.4em;
+        word-wrap: break-word; /* Wrap text within the container */
+    }
+  
+    /* Add more styles for smaller screens here */
+  }

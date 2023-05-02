@@ -43,6 +43,7 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 100% 100% !important;
+  font-size: 160px;
 }
 
 h2 {
@@ -97,6 +98,9 @@ button:hover {
   background: transparent;
   border: #fff 1px solid;
   border-radius: 50%;
+  position: absolute;
+  top: 90vh;
+  left: 50%;
 }
 
 .arrow {
@@ -110,4 +114,55 @@ button:hover {
   transform: rotate(45deg);
   translate: 0px -2px;
   -webkit-transform: rotate(45deg);
+}
+
+.main-title {
+  color: #cdcbca;
+  position: absolute;
+  top: 40vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.row {
+  position: absolute;
+  padding: 0 40px;
+}
+
+.row-1 {
+  top: 132vh;
+}
+
+.row-2 {
+  top: 230vh;
+}
+
+.row-3 {
+  top: 360vh;
+}
+
+.row-4 {
+  position: absolute;
+  top: 430vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7); 
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.col {
+  position: absolute;
+  right: 40px;
+}
+
+.col-1 {
+  width: 540px;
+}
+
+.reach-out-btn {
+  position: absolute;
+  top: 480vh;
+  left: 55%;
+  transform: translate(-50%, -50%);
 }
