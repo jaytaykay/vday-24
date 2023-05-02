@@ -4,6 +4,7 @@ import baffle from "baffle";
 import { useEffect, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { angleToRadians } from "./utils/angle";
+import { isMobile } from "./utils/mobile";
 
 function App() {
 
@@ -27,7 +28,7 @@ function App() {
     orbitControlRef.current.setPolarAngle(angleToRadians(80)+ y * angleToRadians(5));
     orbitControlRef.current.update()
   })
-  
+
   return (
     <>
       <color attach="background" args={["#333333"]} />
@@ -108,7 +109,7 @@ function App() {
         </Scroll>
       </ScrollControls>
 
-      <OrbitControls enablePan={false} enableZoom={false} ref={orbitControlRef} />
+      <OrbitControls enabled={!isMobile()} enablePan={false} enableZoom={false} ref={orbitControlRef} />
     </>
   );
 }
