@@ -27,51 +27,22 @@ export function Laptop(props) {
   useLayoutEffect(() => {
     tl.current = gsap.timeline({ defaults: { duration: 2, ease: 'power3.inOut' } })
 
-    // // TODO make this rotate around the laptop more
-    // tl.current
-    // .to(laptop.current.rotation, {y: -1}, 2)
-    // .to(laptop.current.position, {x: 1}, 2)
-
-    // .to(laptop.current.rotation, {y: 1}, 6)   
-    // .to(laptop.current.position, {x: -1}, 6)
-
-    // .to(laptop.current.rotation, {y: 0}, 11)
-    // .to(laptop.current.rotation, {x: 1}, 11)
-    // .to(laptop.current.position, {x: 0}, 11)
-
-    // .to(laptop.current.rotation, {y: 0}, 13)
-    // .to(laptop.current.rotation, {x: -1}, 13)    
-    // .to(laptop.current.position, {x: 0}, 13)
-
-    // .to(laptop.current.rotation, {y: 0}, 16)   
-    // .to(laptop.current.rotation, {x: 0}, 16) 
-    // .to(laptop.current.position, {x: 0}, 16)    
-
-    // .to(laptop.current.rotation, {y: 0}, 20)   
-    // .to(laptop.current.rotation, {x: 0}, 20) 
-    // .to(laptop.current.position, {x: 0}, 20)   
-
-
     // .to(<object id>, {<parameter>, <value to set it to>} )
     tl.current
       // bio
       .to(laptop.current.rotation, { duration: 4, y: -Math.PI }, 1)
       .to(laptop.current.position, { duration: 4, x: 1 }, 1)
       // projects
-      .to(laptop.current.rotation, { y: 0 }, 5)
-      .to(laptop.current.position, { x: -1, z: 4 }, 5)
+      .to(laptop.current.rotation, { y: 0 }, 6)
+      .to(laptop.current.position, { x: -1, z: 4 }, 6)
       // credit
-      .to(laptop.current.rotation, { y: 0 }, 9)
-      .to(laptop.current.rotation, { x: 1 }, 9)
-      .to(laptop.current.position, { x: 0, z: 2 }, 9)
+      .to(laptop.current.rotation, { y: 0 }, 14)
+      .to(laptop.current.rotation, { x: 1 }, 14)
+      .to(laptop.current.position, { x: 0, z: 2 }, 14)
 
-      .to(laptop.current.rotation, { y: 0 }, 13)
-      .to(laptop.current.rotation, { x: 0 }, 13)
-      .to(laptop.current.position, { x: 0 }, 13)
-
-      .to(laptop.current.rotation, { y: 0 }, 16)
-      .to(laptop.current.rotation, { x: 0 }, 16)
-      .to(laptop.current.position, { x: 0 }, 16)
+      .to(laptop.current.rotation, { y: 0 }, 18)
+      .to(laptop.current.rotation, { x: 0 }, 18)
+      .to(laptop.current.position, { x: 0 }, 18)
   }, [])
 
   return (
