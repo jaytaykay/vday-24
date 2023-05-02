@@ -27,13 +27,7 @@ function App() {
     orbitControlRef.current.setPolarAngle(angleToRadians(80)+ y * angleToRadians(5));
     orbitControlRef.current.update()
   })
-
-  useEffect(() => {
-    if (!!orbitControlRef.current) {
-      console.log(orbitControlRef.current)
-    }
-  })
-
+  
   return (
     <>
       <color attach="background" args={["#333333"]} />
