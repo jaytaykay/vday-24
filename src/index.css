@@ -84,11 +84,6 @@ button:hover {
   background-color: #000000;
 }
 
-.row {
-  width: 100%;
-  padding: 0 40px;
-}
-
 .arrow-container{
   display: flex;
   justify-content: center;
@@ -142,8 +137,8 @@ button:hover {
 }
 
 .row-4 {
-  position: absolute;
   top: 430vh;
+  position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.7); 
@@ -163,6 +158,6 @@ button:hover {
 .reach-out-btn {
   position: absolute;
   top: 480vh;
-  left: 55%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
