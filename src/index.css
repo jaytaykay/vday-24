@@ -1,7 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 html,
 body,
-#root
-{
+#root {
   position: fixed;
   top: 0;
   left: 0;
@@ -16,28 +18,39 @@ body,
   background: transparent; /* Make scrollbar transparent */
 }
 
-body, html {
+body,
+html {
   scrollbar-width: none; /* For Firefox */
   -ms-overflow-style: none; /* For Internet Explorer and Edge */
 }
 
-body
-{
+body {
   margin: 0;
-  font-family: "brandon-grotesque", source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+  font-family: "brandon-grotesque", source-code-pro, Menlo, Monaco, Consolas,
+    "Courier New";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #cdcbca;
 }
 
-h1,h2,h3,h4,h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   text-transform: uppercase;
   letter-spacing: 1.03px;
   line-height: 1.2em;
 }
 
 h1 {
-  background: -webkit-linear-gradient(0deg, #cdcbca, aliceblue, #cdcbca, #2a3a3f);
+  background: -webkit-linear-gradient(
+    0deg,
+    #cdcbca,
+    aliceblue,
+    #cdcbca,
+    #2a3a3f
+  );
   background-size: auto;
   background-clip: border-box;
   -webkit-background-clip: text;
@@ -47,7 +60,13 @@ h1 {
 }
 
 h2 {
-  background: -webkit-linear-gradient(0deg,#cdcbca, aliceblue,#cdcbca,#2a3a3f);
+  background: -webkit-linear-gradient(
+    0deg,
+    #cdcbca,
+    aliceblue,
+    #cdcbca,
+    #2a3a3f
+  );
   background-size: auto;
   background-clip: border-box;
   -webkit-background-clip: text;
@@ -56,14 +75,12 @@ h2 {
   font-size: 40px;
 }
 
-p
-{
+p {
   font-size: 20px;
   line-height: 1.4em;
 }
 
-button
-{
+button {
   background: transparent;
   display: inline-block;
   box-shadow: none;
@@ -79,12 +96,11 @@ button
   cursor: pointer;
 }
 
-
 button:hover {
   background-color: #000000;
 }
 
-.arrow-container{
+.arrow-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -141,7 +157,7 @@ button:hover {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.7); 
+  background-color: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
   padding: 10px 20px;
 }
