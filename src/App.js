@@ -1,44 +1,62 @@
 import {
-  ScrollControls,
-  Scroll,
   Environment,
-  Sparkles,
+  Html,
   OrbitControls,
+  Sparkles,
+  useAnimations,
 } from "@react-three/drei";
-// import { Laptop } from "./components/Laptop";
-import baffle from "baffle";
 import { useEffect, useRef, useState, Suspense } from "react";
 import { useFrame } from "@react-three/fiber";
 import { angleToRadians } from "./utils/angle";
 import { isMobile } from "./utils/mobile";
 import "./App.css";
-import Card from "./components/Card";
-import { projects } from "./projectCopy";
-import { Laptop } from "./components/Laptop";
-import {Loader} from "./components/Loader";
+import { Loader } from "./components/Loader";
+import HelloKitty from "./components/Hello_kitty";
+import { SphereGeometry } from "three";
 
 function App() {
   useEffect(() => {
-    const target = baffle(".title");
-    target.set({
-      characters: "█▓▒░J█▓▒░O█▓▒░S█▓▒░H█▓▒░U█▓▒░A█▓▒░",
-      speed: 100,
-    });
-    target.start();
-    target.reveal(1000, 1000);
-
     isMobile(setIsMobileDevice);
   }, []);
 
-  // remove loading screen
-  useEffect(() => {
-    const loadingScreen = document.querySelector(".loading-screen");
-    if (loadingScreen) {
-      loadingScreen.style.display = "none";
-    }
-  }, []);
-
   const [isMobileDevice, setIsMobileDevice] = useState(false);
+  const [isAccepted, setIsAccepted] = useState(false);
+  const [noButtonPosition, setNoButtonPosition] = useState([2, 0, 0]);
+  const [yesButtonSize, setYesButtonSize] = useState(16);
+
+  const onNoClick = () => {
+    // Define the outer bounds for the spawn area
+    const outerBound = 3; // Adjust this value to set the outer boundary for the button spawn area
+
+    // Function to generate a random value outside the central rectangle
+    const generateRandom = () => {
+      const negative = Math.random() * -outerBound;
+      const positive = Math.random() * outerBound;
+      // 50% chance to choose between negative and positive range
+      return Math.random() < 0.5 ? negative : positive;
+    };
+
+    // Generate random X and Y outside of -2 to 2 range
+    let randomX = generateRandom();
+    let randomY = generateRandom();
+
+    // Ensure X and Y are outside the -2 to 2 range
+    while (randomX > -2 && randomX < 2) {
+      randomX = generateRandom();
+    }
+    while (randomY > -2 && randomY < 2) {
+      randomY = generateRandom();
+    }
+
+    // Z can remain the same as it doesn't need to avoid a specific range
+    const randomZ = Math.random() * 4 - 2;
+
+    setNoButtonPosition([randomX, randomY, randomZ]);
+    setYesButtonSize(yesButtonSize + 8);
+  };
+  const onYesClick = () => {
+    setIsAccepted(true);
+  };
 
   const orbitControlRef = useRef(null);
   useFrame((state) => {
@@ -56,7 +74,7 @@ function App() {
 
   return (
     <>
-      <color attach="background" args={["#333333"]} />
+      <color attach="background" args={["#ff8ad4"]} />
       <ambientLight intensity={1} />
       <spotLight
         position={[0, 25, 0]}
@@ -65,116 +83,62 @@ function App() {
         castShadow
         intensity={2}
       />
-      <Environment
-        background={false} // dont keep the environment in the background
-        files={[
-          "./models/environment/px.png",
-          "./models/environment/nx.png",
-          "./models/environment/py.png",
-          "./models/environment/ny.png",
-          "./models/environment/pz.png",
-          "./models/environment/nz.png",
-        ]}
+
+      <Sparkles
+        speed={1}
+        count={5000}
+        scale={10}
+        geometry={new SphereGeometry(2, 2, 2)}
       />
-      <Suspense fallback={<Loader />}>
-        <ScrollControls pages={5} damping={0.1}>
-          {/* put the laptop here so it stays while you scroll */}
-
-          <Laptop scale={2} />
-          <Sparkles speed={1.5} count={200} scale={5} noise={[1, 1, 1]} />
-
-          <Scroll>{/* Canvas elements here will scroll */}</Scroll>
-          <Scroll html style={{ width: "100%" }}>
-            {/* DOM contents here will scroll along */}
-            <h1 className="title main-title">JOSHUA</h1>
-
-            <div className="arrow-container">
-              <i className="arrow down"></i>
-            </div>
-
-            <div className="row row-1 ">
-              <h2>A Sophomore Computer Science student.</h2>
-              <p>
-                Front-end developer. <br /> Machine learning enthusiast.
-                <br /> Unreal Engine engineer.
-                <br /> Bass acapella singer.
-                <br /> Avid Gamer.
-              </p>
-              <a
-                href={
-                  "https://docs.google.com/document/d/1ftkXOYaxm1ECV2ZQ-pm0cU0H1Wn2UfyV06Llt3iWLKs/edit?usp=sharing"
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button>View Resume</button>
-              </a>
-            </div>
-
-            <div className="row row-2 col col-1">
-              <h2>My Projects</h2>
-              <h3>HungryBees</h3>
-              <p>
-                A mobile application built in Java. <br /> Form or join groupbuy
-                orders at your convenience
-              </p>
-              <a
-                href={"https://tinyurl.com/hungrybees"}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button>Read more</button>
-              </a>
-              <h3>Project GSFI</h3>
-              <p>
-                A linear regression model built in pandas on a dataset of 108
-                countries. <br /> Visit the Flask website to predict existing or
-                new country's food security index
-              </p>
-              <a
-                href={"https://clickbeat.live/"}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button>Read more</button>
-              </a>
-              <h3>Web Developer at SPORES Singapore</h3>
-              <p>
-                Developed an innovative Telegram bot and web app to support the
-                Singapore government's initiative to revitalize Orchard Road and
-                attract a younger audience <br />
-                The app bridges the physical and digital worlds, creating an
-                immersive experience for visitors and encouraging more foot
-                traffic to the area
+      {/* Asking panel */}
+      {!isAccepted && (
+        <>
+          {/* Panel */}
+          <Html position={[-1, 0, 1]} className="noPointerEvents">
+            <div className="bg-purple-300 p-8 text-center rounded-lg max-w-md mx-auto my-8 translate-x-0.5">
+              <h1 className="text-4xl font-bold text-white mb-4">HI NATALIE</h1>
+              <p className="text-xl text-white mb-8">
+                Will you be my Valentine? 😊
               </p>
             </div>
-
-            <div className="row row-3">
-              <h2>Credits</h2>
-              <p>
-                "CyberPunk Laptop" (https://skfb.ly/6SvyM) by Blue Odym is
-                licensed under Creative Commons Attribution
-                (http://creativecommons.org/licenses/by/4.0/).
-              </p>
-              <p>
-                "Shanghai Bund" (https://polyhaven.com/a/shanghai_bund) by Greg
-                Zaal on PolyHaven
-              </p>
-            </div>
-
-            <div className="row row-4">
-              <h2>I'd love to hear from you.</h2>
-            </div>
-
-            <a
-              href={"https://www.linkedin.com/in/jaytaykay/"}
-              target="_blank"
-              rel="noopener noreferrer"
+          </Html>
+          {/* Yes button */}
+          <Html position={[-2, 0, 0]}>
+            <button
+              className="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-700 transition duration-300"
+              style={{
+                fontSize: yesButtonSize,
+              }}
+              onClick={() => onYesClick()}
             >
-              <button className="reach-out-btn">Reach out</button>
-            </a>
-          </Scroll>
-        </ScrollControls>
+              Yes
+            </button>
+          </Html>
+          {/* NO button */}
+          <Html position={noButtonPosition}>
+            <button
+              className="bg-gray-500 text-white font-bold py-2 px-4 rounded hover:bg-gray-700 transition duration-300"
+              onClick={() => onNoClick()}
+            >
+              No
+            </button>
+          </Html>
+        </>
+      )}
+      {/* after accept */}
+      {isAccepted && (
+        <Html position={[-1, 0, 2]}>
+          <div className="bg-purple-300 p-8 text-center rounded-lg max-w-md mx-auto my-8">
+            <h1 className="text-4xl font-bold text-white mb-4">
+              Thank you!! See you in Paris
+            </h1>
+            <p>😊😊😊😊😊😊</p>
+          </div>
+        </Html>
+      )}
+
+      <Suspense fallback={<Loader />}>
+        <HelloKitty scale={3} position={[0, -3, 0]} />
       </Suspense>
 
       {!isMobileDevice && (
