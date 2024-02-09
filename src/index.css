@@ -47,7 +47,6 @@ h1 {
   font-weight: 800; /* Use font-weight for setting the weight */
   font-size: 2em; /* Add a font-size */
   font-family: cursive, sans-serif; /* Add a font-family if desired */
-  width: 50vw;
 }
 
 .noPointerEvents {

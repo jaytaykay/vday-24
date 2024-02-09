@@ -7,7 +7,7 @@ Source: https://sketchfab.com/3d-models/hello-kitty-ebaf7a375aa94d53952fa9705cec
 Title: Hello Kitty
 */
 
-import React, { useRef } from "react";
+import React from "react";
 import { useGLTF } from "@react-three/drei";
 
 export default function HelloKitty(props) {

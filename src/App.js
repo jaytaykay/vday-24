@@ -1,10 +1,4 @@
-import {
-  Environment,
-  Html,
-  OrbitControls,
-  Sparkles,
-  useAnimations,
-} from "@react-three/drei";
+import { Html, OrbitControls, Sparkles } from "@react-three/drei";
 import { useEffect, useRef, useState, Suspense } from "react";
 import { useFrame } from "@react-three/fiber";
 import { angleToRadians } from "./utils/angle";
@@ -84,18 +78,13 @@ function App() {
         intensity={2}
       />
 
-      <Sparkles
-        speed={1}
-        count={5000}
-        scale={10}
-        geometry={new SphereGeometry(2, 2, 2)}
-      />
+      <Sparkles speed={1} count={5000} scale={10} />
       {/* Asking panel */}
       {!isAccepted && (
         <>
           {/* Panel */}
           <Html position={[-1, 0, 1]} className="noPointerEvents">
-            <div className="bg-purple-300 p-8 text-center rounded-lg max-w-md mx-auto my-8 translate-x-0.5">
+            <div className="bg-purple-300 p-8 text-center rounded-lg max-w-md mx-auto my-8 translate-x-0.5 min-w-max">
               <h1 className="text-4xl font-bold text-white mb-4">HI NATALIE</h1>
               <p className="text-xl text-white mb-8">
                 Will you be my Valentine? 😊
@@ -128,7 +117,7 @@ function App() {
       {/* after accept */}
       {isAccepted && (
         <Html position={[-1, 0, 2]}>
-          <div className="bg-purple-300 p-8 text-center rounded-lg max-w-md mx-auto my-8">
+          <div className="bg-purple-300 p-8 text-center rounded-lg max-w-md mx-auto my-8 min-w-max">
             <h1 className="text-4xl font-bold text-white mb-4">
               Thank you!! See you in Paris
             </h1>
