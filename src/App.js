@@ -14,38 +14,19 @@ function App() {
 
   const [isMobileDevice, setIsMobileDevice] = useState(false);
   const [isAccepted, setIsAccepted] = useState(false);
-  const [noButtonPosition, setNoButtonPosition] = useState([2, 0, 0]);
+  const [noButtonPosition, setNoButtonPosition] = useState([2, 0, 2]);
   const [yesButtonSize, setYesButtonSize] = useState(16);
+  const [numNoClicks, setNumNoClicks] = useState(0);
 
   const onNoClick = () => {
-    // Define the outer bounds for the spawn area
-    const outerBound = 3; // Adjust this value to set the outer boundary for the button spawn area
+    const randomX = Math.random() * 4 - 1;
+    const randomY = Math.random() * 3 - 1;
 
-    // Function to generate a random value outside the central rectangle
-    const generateRandom = () => {
-      const negative = Math.random() * -outerBound;
-      const positive = Math.random() * outerBound;
-      // 50% chance to choose between negative and positive range
-      return Math.random() < 0.5 ? negative : positive;
-    };
+    console.log(randomX, randomY);
 
-    // Generate random X and Y outside of -2 to 2 range
-    let randomX = generateRandom();
-    let randomY = generateRandom();
-
-    // Ensure X and Y are outside the -2 to 2 range
-    while (randomX > -2 && randomX < 2) {
-      randomX = generateRandom();
-    }
-    while (randomY > -2 && randomY < 2) {
-      randomY = generateRandom();
-    }
-
-    // Z can remain the same as it doesn't need to avoid a specific range
-    const randomZ = Math.random() * 4 - 2;
-
-    setNoButtonPosition([randomX, randomY, randomZ]);
+    setNoButtonPosition([randomX, randomY, 2]);
     setYesButtonSize(yesButtonSize + 8);
+    setNumNoClicks(numNoClicks + 1);
   };
   const onYesClick = () => {
     setIsAccepted(true);
@@ -88,10 +69,11 @@ function App() {
               <p className="text-xl text-white mb-8">
                 Will you be my Valentine? 😊
               </p>
+              <p>Number of 😭: {numNoClicks}</p>
             </div>
           </Html>
           {/* Yes button */}
-          <Html position={[-2, 0, 0]}>
+          <Html position={[-2, 0, 2]}>
             <button
               className="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-700 transition duration-300"
               style={{
