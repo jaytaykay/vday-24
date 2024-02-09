@@ -6,7 +6,6 @@ import { isMobile } from "./utils/mobile";
 import "./App.css";
 import { Loader } from "./components/Loader";
 import HelloKitty from "./components/Hello_kitty";
-import { SphereGeometry } from "three";
 
 function App() {
   useEffect(() => {
