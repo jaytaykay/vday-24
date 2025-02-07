@@ -7,7 +7,7 @@ Source: https://sketchfab.com/3d-models/minecraft-bee-c9937e06e98c463c9a645b299b
 Title: Minecraft Bee 🐝
 */
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
@@ -16,7 +16,7 @@ export function MinecraftBee({ isHappy, ...props }) {
   const { nodes, materials, animations } = useGLTF(
     "/minecraft_bee-transformed.glb"
   );
-  const { actions } = useAnimations(animations, group);
+  useAnimations(animations, group);
 
   // Add animation when bee is happy
   useFrame((state) => {
