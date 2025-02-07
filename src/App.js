@@ -5,18 +5,19 @@ import { angleToRadians } from "./utils/angle";
 import { isMobile } from "./utils/mobile";
 import "./App.css";
 import { Loader } from "./components/Loader";
-import HelloKitty from "./components/Hello_kitty";
+import { MinecraftBee } from "./components/MinecraftBee";
+import { CursorEffects } from "./components/CursorEffects";
 
 function App() {
-  useEffect(() => {
-    isMobile(setIsMobileDevice);
-  }, []);
-
   const [isMobileDevice, setIsMobileDevice] = useState(false);
   const [isAccepted, setIsAccepted] = useState(false);
   const [noButtonPosition, setNoButtonPosition] = useState([2, 0, 2]);
   const [yesButtonSize, setYesButtonSize] = useState(16);
   const [numNoClicks, setNumNoClicks] = useState(0);
+
+  useEffect(() => {
+    isMobile(setIsMobileDevice);
+  }, []);
 
   const onNoClick = () => {
     const randomX = Math.random() * 4 - 1;
@@ -48,6 +49,11 @@ function App() {
 
   return (
     <>
+      {!isMobileDevice && (
+        <Html>
+          <CursorEffects />
+        </Html>
+      )}
       <color attach="background" args={["#ff8ad4"]} />
       <ambientLight intensity={1} />
       <spotLight
@@ -75,9 +81,10 @@ function App() {
           {/* Yes button */}
           <Html position={[-2, 0, 2]}>
             <button
-              className="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-700 transition duration-300"
+              className="bg-red-500 text-white font-bold py-4 px-8 rounded hover:bg-red-700 transition duration-300 text-3xl"
               style={{
                 fontSize: yesButtonSize,
+                transform: "scale(2)",
               }}
               onClick={() => onYesClick()}
             >
@@ -87,7 +94,10 @@ function App() {
           {/* NO button */}
           <Html position={noButtonPosition}>
             <button
-              className="bg-gray-500 text-white font-bold py-2 px-4 rounded hover:bg-gray-700 transition duration-300"
+              className="bg-gray-500 text-white font-bold py-4 px-8 rounded hover:bg-gray-700 transition duration-300 text-3xl"
+              style={{
+                transform: "scale(2)",
+              }}
               onClick={() => onNoClick()}
             >
               No
@@ -100,7 +110,7 @@ function App() {
         <Html position={[-1, 0, 2]}>
           <div className="bg-purple-300 p-8 text-center rounded-lg max-w-md mx-auto my-8 min-w-max">
             <h1 className="text-4xl font-bold text-white mb-4">
-              Thank you!! See you in Paris
+              Thank you!! See you in Edinburgh in May 💖
             </h1>
             <p>😊😊😊😊😊😊</p>
           </div>
@@ -108,7 +118,12 @@ function App() {
       )}
 
       <Suspense fallback={<Loader />}>
-        <HelloKitty scale={3} position={[0, -3, 0]} />
+        <MinecraftBee
+          scale={15}
+          position={[-2, -2, 0]}
+          rotation={[0, (-3 * Math.PI) / 8, 0]}
+          isHappy={isAccepted}
+        />
       </Suspense>
 
       {!isMobileDevice && (
